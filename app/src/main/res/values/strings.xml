@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Fast Touch</string>
+    <string name="buttonTag">button_off</string>
 </resources>
