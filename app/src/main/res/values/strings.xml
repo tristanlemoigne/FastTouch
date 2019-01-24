@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Fast Touch</string>
     <string name="buttonTag">button_off</string>
+    <string name="button_description">button_description</string>
+    <string name="score_text">Score</string>
+    <string name="score_default">00</string>
 </resources>
