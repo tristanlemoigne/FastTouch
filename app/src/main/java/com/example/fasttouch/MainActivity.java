@@ -1,5 +1,6 @@
 package com.example.fasttouch;
 
+import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < buttonsCount; i++){
 
-            theButtons[i] = new ImageView(this);
+            theButtons[i] = new ImageButton(this);
             theButtons[i].setImageResource(R.drawable.button_off);
             theButtons[i].layout(i*100, i*100,0, 0 );
 
@@ -57,21 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toggleLight(View view) {
-         if(button.getTag().toString().equals("button_off")){
-             button.setImageResource(R.drawable.button_on);
-             button.setTag("button_on");
 
-             scoreCount ++;
-        } else {
-             button.setImageResource(R.drawable.button_off);
-             button.setTag("button_off");
-
-             scoreCount --;
-        }
-
-
-        Log.d(LOG_TAG, scoreCount.toString());
-        score.setText(String.valueOf(scoreCount));
-    }
 }
+
