@@ -28,17 +28,16 @@ public class MainActivity extends AppCompatActivity {
              button.setImageResource(R.drawable.button_on);
              button.setTag("button_on");
 
-             scoreCount = scoreCount + 1;
-
+             scoreCount ++;
         } else {
              button.setImageResource(R.drawable.button_off);
              button.setTag("button_off");
 
-             scoreCount = scoreCount - 1;
+             scoreCount --;
         }
 
 
         Log.d(LOG_TAG, scoreCount.toString());
-        score.setText(scoreCount);
+        score.setText(String.valueOf(scoreCount));
     }
 }
