@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView button;
     private TextView score;
     private Integer scoreCount = 0;
-    private Integer buttonsCount = 10;
+    private Integer buttonsCount = 12;
     private ImageView[] theButtons = new ImageView[buttonsCount];
 
 
@@ -27,29 +27,31 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         score = findViewById(R.id.score_count);
 
-        LinearLayout picLL = new LinearLayout(this);
-        picLL.layout(0, 0, 100, 100);
-        picLL.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-        picLL.setOrientation(LinearLayout.HORIZONTAL);
+        GridLayout picGL = new GridLayout(this);
+        picGL.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
+        picGL.setColumnCount(4);
+        picGL.setRowCount(3);
+        // picGL.setLayoutParams(new GridLayout.LayoutParams(GridLayout.spec(1),GridLayout.spec(1)));
+
+//        picLL.layout(0, 0, 100, 100);
+//        picLL.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+//        picLL.setOrientation(LinearLayout.HORIZONTAL);
 
         for (int i = 0; i < buttonsCount; i++){
 
             theButtons[i] = new ImageView(this);
             theButtons[i].setImageResource(R.drawable.button_off);
             theButtons[i].layout(i*100, i*100,0, 0 );
-            // theButtons[i].setLayoutParams(
-             //        new GridLayout.LayoutParams(
-               //              GridLayout.spec(0, GridLayout.FILL),
-                 //            GridLayout.spec(1, GridLayout.FILL)));
+
 
             Log.d(LOG_TAG, "///////___________////////");
             Log.d(LOG_TAG, theButtons[i].toString());
 
-            picLL.addView(theButtons[i]);
+            picGL.addView(theButtons[i]);
 
 
             Log.d(LOG_TAG, "the buttons: " + theButtons[i].toString());
-            setContentView(picLL);
+            setContentView(picGL);
         }
 
 
