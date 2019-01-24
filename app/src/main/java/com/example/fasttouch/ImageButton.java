@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 
 public class ImageButton extends AppCompatImageView {
 
+    private static final String LOG_TAG = ImageButton.class.getSimpleName();
+
     public ImageButton(Context context) {
         super(context);
         this.setOnClickListener(new View.OnClickListener() {
@@ -29,21 +31,20 @@ public class ImageButton extends AppCompatImageView {
     }
 
 
+
     public void toggleLight() {
         if(this.getTag().toString().equals("button_off")){
             this.setImageResource(R.drawable.button_on);
             this.setTag("button_on");
-
-            // scoreCount ++;
+            MainActivity.scoreCountDown();
         } else {
             this.setImageResource(R.drawable.button_off);
             this.setTag("button_off");
-
-           // scoreCount --;
+            MainActivity.scoreCountUp();
         }
 
 
-        // Log.d(LOG_TAG, scoreCount.toString());
-        // score.setText(String.valueOf(scoreCount));
+         // Log.d(LOG_TAG, MainActivity.getScoreCount().toString());
+
     }
 }
