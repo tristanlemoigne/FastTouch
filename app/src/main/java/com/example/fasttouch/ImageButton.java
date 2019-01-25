@@ -19,6 +19,8 @@ import java.util.TimerTask;
 public class ImageButton extends AppCompatImageView {
 
     private static final String LOG_TAG = ImageButton.class.getSimpleName();
+    static public Timer theInterval = new Timer();
+
 
     public ImageButton(Context context, Integer tileSize) {
         super(context);
@@ -31,26 +33,12 @@ public class ImageButton extends AppCompatImageView {
         // Set tag
         this.setTag("button_off");
 
-        // Set Timer
-        Random random = new Random();
-        int randomTimer = random.nextInt(2000 - 1000) + 1000;
-
-        new Timer().scheduleAtFixedRate(new TimerTask(){
-            @Override
-            public void run() {
-                toggleLight();
-
-            }
-
-        },0,randomTimer);
-
         // Set click listener
         this.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 handleClick();
             }
         });
-
     }
 
     public ImageButton(Context context, AttributeSet attrs) {
@@ -61,6 +49,24 @@ public class ImageButton extends AppCompatImageView {
         super(context, attrs, defStyleAttr);
     }
 
+    public void startInterval(){
+        Random random = new Random();
+        int randomTimer = random.nextInt(2000 - 1000) + 1000;
+
+        theInterval.scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run() {
+                toggleLight();
+            }
+
+        },0,randomTimer);
+    }
+
+    public void stopInterval(){
+        theInterval.cancel();
+    }
+
+
     public void toggleLight() {
         if(this.getTag().toString().equals("button_off")){
             this.setImageResource(R.drawable.button_on);
@@ -69,7 +75,6 @@ public class ImageButton extends AppCompatImageView {
             this.setImageResource(R.drawable.button_off);
             this.setTag("button_off");
         }
-//         Log.d(LOG_TAG, "_______________" + this.getTag().toString());
     }
 
     public void handleClick(){
